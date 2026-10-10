@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmniDelete AI</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <span class="dot"></span>
+        <h2>OmniDelete AI</h2>
+      </div>
+      <div class="header-right">
+        <span id="platform-badge" class="badge">Detecting…</span>
+        <button id="refresh-btn" class="icon-btn" title="Rescan chats">⟳</button>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <input id="search-input" type="search" placeholder="Search chats…" autocomplete="off" />
+    </div>
+
+    <div class="actions-bar">
+      <button id="select-all" class="secondary-btn">Select All</button>
+      <button id="deselect-all" class="secondary-btn">Deselect All</button>
+      <button id="unpinned-only" class="secondary-btn">Unpinned Only</button>
+    </div>
+
+    <div class="status-line">
+      <span id="scan-status" class="muted">Ready</span>
+    </div>
+
+    <div class="chat-list-container">
+      <ul id="chat-list">
+        <li class="loading-state">Scanning active AI platform…</li>
+      </ul>
+    </div>
+
+    <div id="progress-wrap" class="progress-wrap hidden">
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+      <div class="progress-text"><span id="progress-text">0 / 0</span></div>
+    </div>
+
+    <footer>
+      <div class="status-text">
+        <span id="selected-count">0</span> selected
+      </div>
+      <div class="footer-actions">
+        <button id="cancel-btn" class="secondary-btn hidden">Cancel</button>
+        <button id="delete-btn" class="danger-btn" disabled>Delete Selected</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirm-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>⚠️ Confirm Deletion</h3>
+      <p>
+        You're about to permanently delete
+        <strong><span id="confirm-count">0</span> chat(s)</strong>.
+        This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button id="confirm-cancel" class="secondary-btn">Cancel</button>
+        <button id="confirm-ok" class="danger-btn">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
